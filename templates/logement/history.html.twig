@@ -1,0 +1,62 @@
+{% extends "layout/base.html.twig" %}
+
+{% block title %}
+	Historique des réservations
+{% endblock %}
+
+{% block content %}
+	<main class="max-w-container-max mx-auto px-lg py-xl mb-xxl">
+		<header class="mb-xl">
+			<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-xs">Voyages</h1>
+			<p class="font-body-lg text-body-lg text-on-surface-variant">Retrouvez tous vos souvenirs de voyage et vos prochaines aventures.</p>
+		</header>
+		<!-- Filters / Tabs -->
+		<div class="flex gap-md border-b border-outline-variant mb-xl overflow-x-auto hide-scrollbar">
+			<button class="pb-md px-xs font-label-bold text-label-bold text-primary border-b-2 border-primary whitespace-nowrap">Passés</button>
+			<button class="pb-md px-xs font-label-bold text-label-bold text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap">À venir</button>
+			<button class="pb-md px-xs font-label-bold text-label-bold text-on-surface-variant hover:text-on-surface transition-colors whitespace-nowrap">Annulés</button>
+		</div>
+		<!-- Reservation Grid -->
+		<div
+			class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+			{% for reservation in reservations %}
+			<article class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_6px_16px_rgba(0,0,0,0.08)] hover:shadow-[0px_10px_24px_rgba(0,0,0,0.12)] transition-shadow group">
+				<div class="aspect-[4/3] overflow-hidden relative">
+					<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A luxurious modern villa in Saint-Tropez with a sparkling blue infinity pool and sleek white architectural lines. The setting is bright and airy with Mediterranean sunlight casting soft shadows. The overall aesthetic is high-end minimalism, featuring lush green palm trees and a clear blue sky, evoking a sense of premium hospitality and serene relaxation." src="https://lh3.googleusercontent.com/aida/AP1WRLvKuSENKwsloIwK7myr6JPn4eSozubUW3k1X81zBbqOg1xV6YDIBWaarHufldBZlsW-EpM0yFiaDzI_2VWvKorQv1e8qTrmLGTu0O06xvBSOu76jotIkUFKk0-azZtAJRHDsYStf-BD1RebyIcTcrBFruzSNyu6yON2tdk6bwi4aKd6TOAdXCfgvRcS5D6yiP_KkJvlJYSGAd1OS_Mn8Zg7goWaUAJgSBVo-AMpQ7T50g9WkJ7mrFyyD_MZ"/>
+					<div class="absolute top-md left-md">
+						<span class="bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full text-label-caps font-label-caps text-on-surface shadow-sm">Terminé</span>
+					</div>
+				</div>
+				<div class="p-lg">
+					<div class="flex justify-between items-start mb-xs">
+						<div>
+							<h2 class="font-headline-sm text-headline-sm text-on-surface">{{ reservation.property.title }}</h2>
+							<p class="font-body-sm text-body-sm text-on-surface-variant">{{ reservation.property.address.city }}, {{ reservation.property.address.country }}</p>
+						</div>
+						<div class="text-right">
+							<span class="block font-label-bold text-label-bold text-on-surface">{{ reservation.totalPrice }} €</span>
+							<span class="font-label-caps text-label-caps text-on-surface-variant">Total payé</span>
+						</div>
+					</div>
+					<p class="font-body-md text-body-md text-on-surface-variant mb-lg flex items-center gap-xs">
+						<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+						{{ reservation.checkinDate|date('d/m/Y') }} - {{ reservation.checkoutDate|date('d/m/Y') }}
+					</p>
+					<div class="flex flex-col gap-sm">
+						<button class="w-full h-12 bg-primary text-on-primary font-label-bold text-label-bold rounded-lg hover:opacity-90 active:scale-95 transition-all">Réserver à nouveau</button>
+						<button class="w-full h-12 bg-surface-container-high text-on-surface font-label-bold text-label-bold rounded-lg hover:bg-surface-container-highest active:scale-95 transition-all">Laisser un commentaire</button>
+					</div>
+				</div>
+			</article>
+			{% endfor %}
+		</div>
+		<!-- Help Section -->
+		<section class="mt-xxl bg-surface-container rounded-xl p-xl flex flex-col md:flex-row items-center gap-lg">
+			<div class="flex-1">
+				<h3 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Besoin d'aide avec un voyage ?</h3>
+				<p class="font-body-md text-body-md text-on-surface-variant">Notre service client est disponible 24h/24 pour vous assister dans vos démarches ou réclamations.</p>
+			</div>
+			<button class="px-xl h-12 border border-outline text-on-surface font-label-bold text-label-bold rounded-lg hover:bg-surface-container-highest transition-colors">Contacter le support</button>
+		</section>
+	</main>
+{% endblock %}

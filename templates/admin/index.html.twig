@@ -1,0 +1,225 @@
+{% extends "layout/base.html.twig" %}
+
+{% block sideBar %}
+	{% include 'admin/sideBar.html.twig' %}
+{% endblock %}
+
+
+{% block content %}
+
+	<div
+		class="max-w-container-max mx-auto p-lg lg:p-xl space-y-xl">
+		<!-- Page Header -->
+		<div class="flex justify-between items-end">
+			<div>
+				<h1 class="font-headline-md text-on-background">System Overview</h1>
+				<p class="text-on-surface-variant">Welcome back, Admin. Here's what's happening today.</p>
+			</div>
+			<div class="flex gap-md">
+				<button class="flex items-center gap-xs px-md py-sm border border-outline rounded-xl font-label-bold hover:bg-surface-container transition-all">
+					<span class="material-symbols-outlined" data-icon="download">download</span>
+					Export Report
+				</button>
+			</div>
+		</div>
+		<!-- Stats Overview Cards (Bento Grid Style) -->
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+			<div class="bg-surface p-xl rounded-2xl shadow-sm border border-outline-variant hover:shadow-md transition-all duration-300">
+				<div class="flex justify-between items-start mb-md">
+					<div class="p-sm bg-tertiary-fixed rounded-xl">
+						<span class="material-symbols-outlined text-on-tertiary-fixed" data-icon="payments">payments</span>
+					</div>
+					<span class="text-tertiary text-xs font-label-bold flex items-center gap-xs">
+						<span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span>
+						+12.5%
+					</span>
+				</div>
+				<h3 class="text-on-surface-variant text-sm font-label-caps mb-xs">Total Revenue</h3>
+				<p class="font-headline-sm text-on-surface">$2,458,900</p>
+			</div>
+			<div class="bg-surface p-xl rounded-2xl shadow-sm border border-outline-variant hover:shadow-md transition-all duration-300">
+				<div class="flex justify-between items-start mb-md">
+					<div class="p-sm bg-secondary-fixed rounded-xl">
+						<span class="material-symbols-outlined text-on-secondary-fixed" data-icon="home">home</span>
+					</div>
+					<span class="text-tertiary text-xs font-label-bold flex items-center gap-xs">
+						<span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span>
+						+5.2%
+					</span>
+				</div>
+				<h3 class="text-on-surface-variant text-sm font-label-caps mb-xs">Active Listings</h3>
+				<p class="font-headline-sm text-on-surface">18,245</p>
+			</div>
+			<div class="bg-surface p-xl rounded-2xl shadow-sm border border-outline-variant hover:shadow-md transition-all duration-300">
+				<div class="flex justify-between items-start mb-md">
+					<div class="p-sm bg-primary-fixed rounded-xl">
+						<span class="material-symbols-outlined text-on-primary-fixed" data-icon="pending_actions">pending_actions</span>
+					</div>
+					<span class="text-error text-xs font-label-bold flex items-center gap-xs">
+						<span class="material-symbols-outlined text-xs" data-icon="notification_important">notification_important</span>
+						48h avg
+					</span>
+				</div>
+				<h3 class="text-on-surface-variant text-sm font-label-caps mb-xs">Pending Approvals</h3>
+				<p class="font-headline-sm text-on-surface">142</p>
+			</div>
+			<div class="bg-surface p-xl rounded-2xl shadow-sm border border-outline-variant hover:shadow-md transition-all duration-300">
+				<div class="flex justify-between items-start mb-md">
+					<div class="p-sm bg-tertiary-container rounded-xl">
+						<span class="material-symbols-outlined text-on-tertiary-container" data-icon="person_add">person_add</span>
+					</div>
+					<span class="text-tertiary text-xs font-label-bold flex items-center gap-xs">
+						<span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span>
+						+8.1%
+					</span>
+				</div>
+				<h3 class="text-on-surface-variant text-sm font-label-caps mb-xs">New Users</h3>
+				<p class="font-headline-sm text-on-surface">1,208</p>
+			</div>
+		</div>
+		<!-- Main Grid Layout -->
+		<div
+			class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+			<!-- Reservations Table Section -->
+			<div class="lg:col-span-2 bg-surface rounded-3xl shadow-sm border border-outline-variant overflow-hidden">
+				<div class="p-lg border-b border-outline-variant flex justify-between items-center">
+					<h2 class="font-headline-sm text-on-surface">Recent Reservations</h2>
+					<button class="text-primary font-label-bold hover:underline">View all</button>
+				</div>
+				<div class="overflow-x-auto">
+					<table class="w-full text-left">
+						<thead class="bg-surface-container-low">
+							<tr>
+								<th class="px-lg py-md font-label-caps text-on-surface-variant text-xs">Listing</th>
+								<th class="px-lg py-md font-label-caps text-on-surface-variant text-xs">Guest</th>
+								<th class="px-lg py-md font-label-caps text-on-surface-variant text-xs">Dates</th>
+								<th class="px-lg py-md font-label-caps text-on-surface-variant text-xs">Status</th>
+								<th class="px-lg py-md font-label-caps text-on-surface-variant text-xs">Amount</th>
+							</tr>
+						</thead>
+						<tbody class="divide-y divide-outline-variant">
+							<tr class="hover:bg-surface-container-low transition-colors">
+								<td class="px-lg py-md">
+									<div class="flex items-center gap-sm">
+										<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+											<img alt="Listing" class="w-full h-full object-cover" data-alt="A high-end, minimalist studio apartment in Paris with large windows overlooking a cobblestone street. The interior is decorated with mid-century modern furniture, a clean white walls, and a warm wooden floor. The lighting is golden-hour sunlight streaming in, creating a cozy and luxurious atmosphere for a premium travel listing." src="https://lh3.googleusercontent.com/aida/AP1WRLvx5W_bAOVDxgaogXi6oCrtg91vo4VIu9rKz-N28Wyas7VAKZ1tXRD4TAduyF9xZoSMXsHqki1s3Lim1-U-iq1-MFQVzCYj42WHFlN4xVm8e6rtDequn8_XSdV9-c92jMuQZ7EqK1003mNDV63KmfY6BqQX35dq7fKOD9Jcp_QGtBes7NGIGtj4E3rCXuTWN6vpZEGK1d8tdgJlI_NF3HtpC-sGnCM3Z0qZRB6nfpMcHV2vFI-yON811-UD"/>
+										</div>
+										<div>
+											<p class="font-label-bold text-on-surface">Modern Loft, Paris</p>
+											<p class="text-xs text-on-surface-variant">Host: Julian M.</p>
+										</div>
+									</div>
+								</td>
+								<td class="px-lg py-md text-sm text-on-surface">Sarah Connor</td>
+								<td class="px-lg py-md text-sm text-on-surface">Oct 12 - Oct 15</td>
+								<td class="px-lg py-md">
+									<span class="px-sm py-xs bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full text-xs font-label-bold">Confirmed</span>
+								</td>
+								<td class="px-lg py-md font-label-bold text-on-surface">$1,240</td>
+							</tr>
+							<tr class="hover:bg-surface-container-low transition-colors">
+								<td class="px-lg py-md">
+									<div class="flex items-center gap-sm">
+										<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+											<img alt="Listing" class="w-full h-full object-cover" data-alt="A futuristic glass villa perched on a cliffside in Santorini overlooking the deep blue Aegean Sea. The architecture is ultra-modern with sharp angles and seamless integration with the rocky landscape. The sky is a clear twilight blue, and soft architectural lighting illuminates the white stone paths. Professional travel photography style." src="https://lh3.googleusercontent.com/aida/AP1WRLuBlQnTEsfzC6iBniIWYJgQq2XpTvYzYD59s2gsRNALz38YKbDM9kJRDlw2Yi_S9TU-Sff2VDKq7zhrbAlz2AlGmCloEPX2v6aljR-8pyuKJ1Wet_OO82xh3RP5nEsJyLksGvQ_uPVh_CrPmsnS45_KNAYoc_wtodurD74n-tZUJOiQjLQExhNV4VkPs0YlYg3F6wYZq5UtHR4_OiHtUUKJ3YAdQ9pHJWXMt_a7Fmc0OatFB4Ds5U7EJr6-"/>
+										</div>
+										<div>
+											<p class="font-label-bold text-on-surface">Cliffside Villa</p>
+											<p class="text-xs text-on-surface-variant">Host: Elena G.</p>
+										</div>
+									</div>
+								</td>
+								<td class="px-lg py-md text-sm text-on-surface">Marcus Aurelius</td>
+								<td class="px-lg py-md text-sm text-on-surface">Oct 20 - Oct 28</td>
+								<td class="px-lg py-md">
+									<span class="px-sm py-xs bg-primary-fixed text-on-primary-fixed-variant rounded-full text-xs font-label-bold">Pending</span>
+								</td>
+								<td class="px-lg py-md font-label-bold text-on-surface">$5,800</td>
+							</tr>
+							<tr class="hover:bg-surface-container-low transition-colors">
+								<td class="px-lg py-md">
+									<div class="flex items-center gap-sm">
+										<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+											<img alt="Listing" class="w-full h-full object-cover" data-alt="A cozy, high-end mountain cabin in the Swiss Alps, surrounded by snow-covered pine trees. The cabin features large floor-to-ceiling windows and a warm, glowing interior with a stone fireplace. The scene is shot during the blue hour, emphasizing the contrast between the cold exterior and the warm, inviting interior light. Minimalist and premium." src="https://lh3.googleusercontent.com/aida/AP1WRLu-AIt7Ci_t_vw3m_goE2DshZqw4IKVJX-oOKQ3KPQOXBGc2n_zrqFjkr-FagA8DRv9myxYKQACIzPOORNltR7NCw9wOLVoEdslB75IhDlr0EgVn5iiO8h5EYejSVvFLEp6sYLzqKU0usG6FImLwjXjSvIOFZKDNmzbEFi4w_b8Mvfy1ahetaq9l6s2_FKBMPI83U_xUD7fP_Nh50AaH5ooPmfY8kf4kBnkWdPO-FpxgpjkAkwdfR5JHb5-"/>
+										</div>
+										<div>
+											<p class="font-label-bold text-on-surface">Alpine Retreat</p>
+											<p class="text-xs text-on-surface-variant">Host: Hans S.</p>
+										</div>
+									</div>
+								</td>
+								<td class="px-lg py-md text-sm text-on-surface">John Wick</td>
+								<td class="px-lg py-md text-sm text-on-surface">Nov 01 - Nov 05</td>
+								<td class="px-lg py-md">
+									<span class="px-sm py-xs bg-error-container text-on-error-container rounded-full text-xs font-label-bold">Cancelled</span>
+								</td>
+								<td class="px-lg py-md font-label-bold text-on-surface">$2,100</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- Recent Activity Feed -->
+			<div class="bg-surface rounded-3xl shadow-sm border border-outline-variant p-lg space-y-lg">
+				<div class="flex justify-between items-center">
+					<h2 class="font-headline-sm text-on-surface">Recent Activity</h2>
+					<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="more_vert">more_vert</span>
+				</div>
+				<div class="space-y-md">
+					<div class="flex gap-md">
+						<div class="w-10 h-10 rounded-full bg-secondary-container flex-shrink-0 flex items-center justify-center">
+							<span class="material-symbols-outlined text-on-secondary-container" data-icon="person_add">person_add</span>
+						</div>
+						<div class="flex-1">
+							<p class="text-sm text-on-surface">
+								<strong>Sofia Rodriguez</strong>
+								registered as a new Host in Madrid.</p>
+							<p class="text-xs text-on-surface-variant">2 minutes ago</p>
+						</div>
+					</div>
+					<div class="flex gap-md">
+						<div class="w-10 h-10 rounded-full bg-primary-container flex-shrink-0 flex items-center justify-center text-on-primary">
+							<span class="material-symbols-outlined" data-icon="new_releases">new_releases</span>
+						</div>
+						<div class="flex-1">
+							<p class="text-sm text-on-surface">New property submission:
+								<strong>"Eco-Treehouse"</strong>
+								in Costa Rica.</p>
+							<div class="mt-sm flex gap-sm">
+								<button class="px-sm py-xs bg-primary text-on-primary text-xs rounded-lg font-label-bold">Review</button>
+								<button class="px-sm py-xs border border-outline text-xs rounded-lg font-label-bold">Dismiss</button>
+							</div>
+							<p class="text-xs text-on-surface-variant mt-xs">15 minutes ago</p>
+						</div>
+					</div>
+					<div class="flex gap-md">
+						<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex-shrink-0 flex items-center justify-center">
+							<span class="material-symbols-outlined text-on-tertiary-fixed" data-icon="star">star</span>
+						</div>
+						<div class="flex-1">
+							<p class="text-sm text-on-surface">Host
+								<strong>Liam N.</strong>
+								reached Superhost status.</p>
+							<p class="text-xs text-on-surface-variant">1 hour ago</p>
+						</div>
+					</div>
+					<div class="flex gap-md">
+						<div class="w-10 h-10 rounded-full bg-surface-container flex-shrink-0 flex items-center justify-center">
+							<span class="material-symbols-outlined text-on-surface-variant" data-icon="support_agent">support_agent</span>
+						</div>
+						<div class="flex-1">
+							<p class="text-sm text-on-surface">Support ticket
+								<strong>#8492</strong>
+								resolved by Admin Jane.</p>
+							<p class="text-xs text-on-surface-variant">3 hours ago</p>
+						</div>
+					</div>
+				</div>
+				<button class="w-full py-md border-t border-outline-variant text-on-surface-variant text-sm font-label-bold hover:text-primary transition-colors">
+					Show all activity
+				</button>
+			</div>
+		</div>
+
+	</div>
+{% endblock %}

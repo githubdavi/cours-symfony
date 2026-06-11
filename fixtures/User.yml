@@ -1,0 +1,13 @@
+App\Entity\User:
+    mon_user_{1..10}:
+        email: '<safeEmail()>'
+        passwordHash: '<password()>'
+        phone: '<phoneNumber()>'
+        status: '<randomElement(["active", "inactive", "suspended"])>'
+
+App\Entity\UserDocument:
+    mon_document_{1..100}:
+        user: '@mon_user_<numberBetween(1, 10)>'
+        type: '<randomElement(["identity_card", "passport", "driver_license"])>'
+        fileUrl: '<imageUrl()>'
+        verificationStatus: '<randomElement(["pending", "verified", "rejected"])>'

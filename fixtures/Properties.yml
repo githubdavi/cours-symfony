@@ -1,0 +1,51 @@
+App\Entity\CancellationPolicy:
+    policy_flexible:
+        code: 'FLEXIBLE'
+        label: 'Flexible'
+        description: "Remboursement intégral jusqu'à 24 heures avant l'arrivée."
+    policy_moderate:
+        code: 'MODERATE'
+        label: 'Modérée'
+        description: "Remboursement intégral jusqu'à 5 jours avant l'arrivée."
+    policy_strict:
+        code: 'STRICT'
+        label: 'Stricte'
+        description: "Remboursement de 50% jusqu'à 7 jours avant l'arrivée."
+
+App\Entity\Property:
+    property_{1..20}:
+        host: '@mon_user_<numberBetween(1, 10)>'
+        cancellationPolicy: '@policy_*'
+        title: '<sentence(3)>'
+        description: '<text()>'
+        propertyType: '<randomElement(["Maison", "Appartement", "Villa", "Chalet", "Studio"])>'
+        status: '<randomElement(["active", "inactive", "draft"])>'
+        maxGuests: '<numberBetween(1, 10)>'
+        bedrooms: '<numberBetween(1, 5)>'
+        beds: '<numberBetween(1, 8)>'
+        bathrooms: '<numberBetween(1, 4)>'
+        pricePerNight: '<randomFloat(2, 40, 400)>'
+        cleaningFee: '<randomFloat(2, 10, 80)>'
+        securityDeposit: '<randomFloat(2, 100, 500)>'
+        checkinTime: '<(new \DateTimeImmutable("14:00"))>'
+        checkoutTime: '<(new \DateTimeImmutable("11:00"))>'
+        instantBooking: '<boolean()>'
+        createdAt: '<(new \DateTimeImmutable("-30 days"))>'
+
+App\Entity\PropertyAddress:
+    address_{1..20}:
+        property: '@property_<current()>'
+        country: '<country()>'
+        city: '<city()>'
+        postalCode: '<postcode()>'
+        addressLine1: '<streetAddress()>'
+        latitude: '<latitude()>'
+        longitude: '<longitude()>'
+
+App\Entity\PropertyRule:
+    rule_{1..20}:
+        property: '@property_<current()>'
+        petsAllowed: '<boolean()>'
+        smokingAllowed: '<boolean()>'
+        partiesAllowed: '<boolean()>'
+        additionalRules: '<paragraph()>'

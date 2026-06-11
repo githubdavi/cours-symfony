@@ -1,0 +1,175 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Property
+{% endblock %}
+
+{% block body %}
+	<h1>Create new Property</h1>
+
+	{{ include('property/_form.html.twig') }}
+
+	<a href="{{ path('app_property_index') }}">back to list</a>
+
+
+	<main class="flex-1 min-w-0 bg-background px-margin-mobile md:px-xl py-xl overflow-y-auto">
+		<div
+			class="max-w-4xl mx-auto">
+			<!-- Header Actions -->
+			<div class="flex flex-col md:flex-row md:items-center justify-between gap-md mb-xxl">
+				<div>
+					<a class="inline-flex items-center gap-xs text-primary font-label-bold text-label-bold hover:underline mb-base" href="#">
+						<span class="material-symbols-outlined text-sm">arrow_back</span>
+						Retour à la liste
+					</a>
+					<h1 class="font-headline-md text-headline-md text-on-surface">Ajouter un nouvel hébergement</h1>
+				</div>
+				<div class="flex gap-md">
+					<button class="flex-1 md:flex-none px-xl py-md bg-primary text-on-primary rounded-full font-label-bold text-label-bold shadow-md hover:bg-primary-container active:scale-95 transition-all">
+						Enregistrer
+					</button>
+				</div>
+			</div>
+			<!-- Main Form -->
+			<form
+				class="space-y-xl">
+				<!-- Basic Information Section -->
+				<section class="bg-surface p-xl rounded-xl shadow-[0px_6px_16px_rgba(0,0,0,0.08)] space-y-lg">
+					<h2 class="font-headline-sm text-headline-sm text-on-surface border-b border-outline-variant pb-md">Informations générales</h2>
+					<div class="grid grid-cols-1 gap-lg">
+						<div class="flex flex-col gap-xs">
+							<label class="font-label-bold text-label-bold text-on-surface-variant">Titre de l'annonce</label>
+							<input class="w-full p-md border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Ex: Loft moderne en plein cœur de Paris" type="text"/>
+						</div>
+						<div class="flex flex-col gap-xs">
+							<label class="font-label-bold text-label-bold text-on-surface-variant">Description détaillée</label>
+							<textarea class="w-full p-md border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Décrivez votre logement, ses atouts et son quartier..." rows="6"></textarea>
+						</div>
+					</div>
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+						<div class="flex flex-col gap-xs">
+							<label class="font-label-bold text-label-bold text-on-surface-variant">Type de propriété</label>
+							<select class="w-full p-md border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none bg-surface">
+								<option>Appartement</option>
+								<option>Maison</option>
+								<option>Villa</option>
+								<option>Chalet</option>
+								<option>Loft</option>
+							</select>
+						</div>
+						<div class="flex flex-col gap-xs">
+							<label class="font-label-bold text-label-bold text-on-surface-variant">Statut de publication</label>
+							<div class="flex gap-md mt-xs">
+								<label class="flex-1 flex items-center justify-center gap-sm p-md border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary-container/10">
+									<input checked="" class="hidden" name="status" type="radio" value="draft"/>
+									<span class="material-symbols-outlined text-on-surface-variant">draft</span>
+									<span class="font-body-md text-body-md">Brouillon</span>
+								</label>
+								<label class="flex-1 flex items-center justify-center gap-sm p-md border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary-container/10">
+									<input class="hidden" name="status" type="radio" value="published"/>
+									<span class="material-symbols-outlined text-primary">cloud_done</span>
+									<span class="font-body-md text-body-md">Publié</span>
+								</label>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- Capacity and Rooms Section -->
+				<section class="bg-surface p-xl rounded-xl shadow-[0px_6px_16px_rgba(0,0,0,0.08)] space-y-lg">
+					<h2 class="font-headline-sm text-headline-sm text-on-surface border-b border-outline-variant pb-md">Capacité et Agencement</h2>
+					<div class="grid grid-cols-2 md:grid-cols-4 gap-lg">
+						<div class="flex flex-col gap-xs">
+							<label class="font-label-bold text-label-bold text-on-surface-variant">Voyageurs max</label>
+							<div class="relative">
+								<input class="w-full p-md border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" min="1" type="number" value="2"/>
+								<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined opacity-40">groups</span>
+							</div>
+						</div>
+						<div class="flex flex-col gap-xs">
+							<label class="font-label-bold text-label-bold text-on-surface-variant">Chambres</label>
+							<div class="relative">
+								<input class="w-full p-md border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" min="0" type="number" value="1"/>
+								<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined opacity-40">bed</span>
+							</div>
+						</div>
+						<div class="flex flex-col gap-xs">
+							<label class="font-label-bold text-label-bold text-on-surface-variant">Lits</label>
+							<div class="relative">
+								<input class="w-full p-md border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" min="1" type="number" value="1"/>
+								<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined opacity-40">hotel</span>
+							</div>
+						</div>
+						<div class="flex flex-col gap-xs">
+							<label class="font-label-bold text-label-bold text-on-surface-variant">Salles de bain</label>
+							<div class="relative">
+								<input class="w-full p-md border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" min="0" type="number" value="1"/>
+								<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined opacity-40">bathtub</span>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- Pricing Section -->
+				<section class="bg-surface p-xl rounded-xl shadow-[0px_6px_16px_rgba(0,0,0,0.08)] space-y-lg">
+					<h2 class="font-headline-sm text-headline-sm text-on-surface border-b border-outline-variant pb-md">Tarification</h2>
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+						<div class="flex flex-col gap-xs">
+							<label class="font-label-bold text-label-bold text-on-surface-variant">Prix par nuit (€)</label>
+							<input class="w-full p-md border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="0.00" type="number"/>
+						</div>
+						<div class="flex flex-col gap-xs">
+							<label class="font-label-bold text-label-bold text-on-surface-variant">Frais de ménage (€)</label>
+							<input class="w-full p-md border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="0.00" type="number"/>
+						</div>
+						<div class="flex flex-col gap-xs">
+							<label class="font-label-bold text-label-bold text-on-surface-variant">Dépôt de garantie (€)</label>
+							<input class="w-full p-md border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="0.00" type="number"/>
+						</div>
+					</div>
+					<div class="flex items-center justify-between p-lg bg-surface-container-low rounded-xl">
+						<div class="flex items-center gap-md">
+							<div class="bg-primary-container p-sm rounded-full">
+								<span class="material-symbols-outlined text-on-primary-container">bolt</span>
+							</div>
+							<div>
+								<p class="font-label-bold text-label-bold text-on-surface">Réservation instantanée</p>
+								<p class="font-body-sm text-body-sm text-on-surface-variant">Permettre aux voyageurs de réserver sans attendre votre confirmation.</p>
+							</div>
+						</div>
+						<label class="relative inline-flex items-center cursor-pointer">
+							<input class="sr-only peer" type="checkbox"/>
+							<div class="w-14 h-7 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+						</label>
+					</div>
+				</section>
+				<!-- Availability Section -->
+				<section class="bg-surface p-xl rounded-xl shadow-[0px_6px_16px_rgba(0,0,0,0.08)] space-y-lg">
+					<h2 class="font-headline-sm text-headline-sm text-on-surface border-b border-outline-variant pb-md">Horaires et Disponibilités</h2>
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+						<div class="flex flex-col gap-xs">
+							<label class="font-label-bold text-label-bold text-on-surface-variant">Heure d'arrivée (Check-in)</label>
+							<div class="relative">
+								<input class="w-full p-md border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" type="time" value="15:00"/>
+								<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined opacity-40">login</span>
+							</div>
+						</div>
+						<div class="flex flex-col gap-xs">
+							<label class="font-label-bold text-label-bold text-on-surface-variant">Heure de départ (Check-out)</label>
+							<div class="relative">
+								<input class="w-full p-md border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" type="time" value="11:00"/>
+								<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined opacity-40">logout</span>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- Footer Actions -->
+				<div class="flex flex-col md:flex-row gap-lg pt-xl border-t border-outline-variant">
+					<button class="flex-1 py-md bg-primary text-on-primary rounded-full font-label-bold text-label-bold shadow-md hover:bg-primary-container active:scale-95 transition-all order-1 md:order-2" type="submit">
+						Enregistrer les modifications
+					</button>
+					<button class="flex-1 py-md border border-error text-error rounded-full font-label-bold text-label-bold hover:bg-error-container active:scale-95 transition-all order-2 md:order-1" type="button">
+						Supprimer l'hébergement
+					</button>
+				</div>
+			</form>
+		</div>
+	</main>
+{% endblock %}

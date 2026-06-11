@@ -1,0 +1,185 @@
+{% extends "layout/base.html.twig" %}
+
+{% block sideBar %}
+	{% include 'admin/sideBar.html.twig' %}
+{% endblock %}
+
+
+{% block content %}
+
+	<main
+		class="flex-1 flex flex-col min-w-0 bg-background overflow-x-hidden">
+		<!-- Top Bar -->
+		<header class="sticky top-0 z-40 bg-surface/80 backdrop-blur-md px-margin-mobile md:px-xl py-lg flex justify-between items-center border-b border-outline-variant/30">
+			<div>
+				<h1 class="font-headline-md text-headline-md text-on-surface">User Management</h1>
+				<p class="font-body-sm text-body-sm text-on-surface-variant">View and manage all system users and their permissions.</p>
+			</div>
+			<button class="bg-primary text-white px-lg py-md rounded-full font-label-bold text-label-bold hover:bg-primary-container transition-all shadow-lg shadow-primary/20 flex items-center gap-sm active:scale-95">
+				<span class="material-symbols-outlined text-[20px]">person_add</span>
+				Add New User
+			</button>
+		</header>
+		<div
+			class="p-margin-mobile md:p-xl flex flex-col gap-xxl max-w-7xl">
+			<!-- Stats Row -->
+			<section class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+				<div class="glass-card p-xl rounded-2xl flex items-center gap-lg shadow-sm border border-outline-variant/20 hover:shadow-md transition-shadow">
+					<div class="w-14 h-14 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+						<span class="material-symbols-outlined text-[32px]">group</span>
+					</div>
+					<div>
+						<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">TOTAL USERS</p>
+						<h3 class="text-3xl font-bold text-on-surface">24,592</h3>
+						<p class="text-[12px] text-tertiary font-semibold flex items-center gap-xs mt-xs">
+							<span class="material-symbols-outlined text-[14px]">trending_up</span>
+							+12% this month
+						</p>
+					</div>
+				</div>
+				<div class="glass-card p-xl rounded-2xl flex items-center gap-lg shadow-sm border border-outline-variant/20 hover:shadow-md transition-shadow">
+					<div class="w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center text-secondary">
+						<span class="material-symbols-outlined text-[32px]">real_estate_agent</span>
+					</div>
+					<div>
+						<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">ACTIVE HOSTS</p>
+						<h3 class="text-3xl font-bold text-on-surface">8,104</h3>
+						<p class="text-[12px] text-on-surface-variant font-semibold mt-xs">33% of total users</p>
+					</div>
+				</div>
+				<div class="glass-card p-xl rounded-2xl flex items-center gap-lg shadow-sm border border-outline-variant/20 hover:shadow-md transition-shadow">
+					<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+						<span class="material-symbols-outlined text-[32px]">verified_user</span>
+					</div>
+					<div>
+						<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">PENDING VERIFICATIONS</p>
+						<h3 class="text-3xl font-bold text-on-surface">142</h3>
+						<p class="text-[12px] text-error font-semibold flex items-center gap-xs mt-xs">
+							<span class="material-symbols-outlined text-[14px]">priority_high</span>
+							Action required
+						</p>
+					</div>
+				</div>
+			</section>
+			<!-- Search and Filters -->
+			<section class="flex flex-col md:flex-row gap-lg items-end md:items-center bg-white p-lg rounded-2xl shadow-sm border border-outline-variant/30">
+				<div class="flex-1 w-full relative">
+					<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">search</span>
+					<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none text-body-md" placeholder="Search by name, email or ID..." type="text"/>
+				</div>
+				<div class="flex gap-md w-full md:w-auto">
+					<div class="flex-1 md:w-48">
+						<label class="block text-[10px] font-bold text-on-surface-variant mb-1 uppercase tracking-widest px-1">Role</label>
+						<select class="w-full px-4 py-2 bg-white border border-outline-variant rounded-xl font-label-bold text-label-bold focus:border-primary transition-all">
+							<option>All Roles</option>
+							<option>Host</option>
+							<option>Guest</option>
+						</select>
+					</div>
+					<div class="flex-1 md:w-48">
+						<label class="block text-[10px] font-bold text-on-surface-variant mb-1 uppercase tracking-widest px-1">Status</label>
+						<select class="w-full px-4 py-2 bg-white border border-outline-variant rounded-xl font-label-bold text-label-bold focus:border-primary transition-all">
+							<option>All Status</option>
+							<option>Active</option>
+							<option>Pending</option>
+							<option>Suspended</option>
+						</select>
+					</div>
+				</div>
+			</section>
+			<!-- Data Table -->
+			<section class="bg-white rounded-2xl border border-outline-variant/40 shadow-sm overflow-hidden">
+				<div class="overflow-x-auto custom-scrollbar">
+					<table class="w-full text-left border-collapse">
+						<thead>
+							<tr class="bg-surface-container-low border-b border-outline-variant">
+								<th class="px-xl py-md font-label-caps text-label-caps text-on-surface-variant">User</th>
+								<th class="px-xl py-md font-label-caps text-label-caps text-on-surface-variant">Role</th>
+								<th class="px-xl py-md font-label-caps text-label-caps text-on-surface-variant">Joined Date</th>
+								<th class="px-xl py-md font-label-caps text-label-caps text-on-surface-variant">Status</th>
+								<th class="px-xl py-md font-label-caps text-label-caps text-on-surface-variant text-right">Actions</th>
+							</tr>
+						</thead>
+						<tbody
+							class="divide-y divide-outline-variant/30">
+							<!-- Row 1 -->
+
+							{% for user in users %}
+								<tr class="hover:bg-surface-container-low/50 transition-colors">
+									<td class="px-xl py-lg">
+										<div class="flex items-center gap-md">
+											<img alt="User" class="w-12 h-12 rounded-full object-cover" data-alt="A portrait of a cheerful young woman with long dark hair, wearing a stylish minimalist cream-colored sweater. She is sitting in a sun-drenched, airy modern living room with soft, warm lighting. The aesthetic is clean and high-end, reflecting a premium traveler's profile with a friendly, welcoming vibe." src="https://lh3.googleusercontent.com/aida/AP1WRLt942lmFBAFh2s3j-3mMbT8iHf47W8kNGKBIuW8hhxH6uKMUIlsXP9qIrk9prKNrXrEFcccCo5AN7GEgR8wNfAvMPP1HKv9Zwl4sDDpFVoEqojwFrMPA4WP_21PGLwrSXJZlLAXzh76Gs2EraagX3nnf7w20NQF4h3JZBchR_Rgce6OnkDqBmPB8_3kbGE5HfO9WOSjeWhSUzQnE_E1ZdnAyCp_VXKFG4nXSz7xgjgeR1Tv7YzkhkYlh1Q"/>
+											<div>
+												<p class="font-label-bold text-label-bold">Elena Rodriguez</p>
+												<p class="font-body-sm text-body-sm text-on-surface-variant">{{ user.email }}</p>
+											</div>
+										</div>
+									</td>
+									<td class="px-xl py-lg">
+										<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-[12px] font-bold uppercase tracking-wider">Host</span>
+									</td>
+									<td class="px-xl py-lg font-body-sm text-on-surface-variant">Oct 12, 2023</td>
+									<td class="px-xl py-lg">
+										<div class="flex items-center gap-xs text-tertiary">
+											<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+											<span class="font-label-bold text-[12px]">Active</span>
+										</div>
+									</td>
+									<td class="px-xl py-lg text-right">
+										<div class="flex justify-end gap-sm">
+											<button class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container-highest text-on-surface-variant transition-all">
+												<span class="material-symbols-outlined text-[20px]">edit</span>
+											</button>
+											<button class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-error-container text-error transition-all">
+												<span class="material-symbols-outlined text-[20px]">block</span>
+											</button>
+										</div>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<!-- Pagination -->
+				<div class="px-xl py-lg flex flex-col sm:flex-row items-center justify-between gap-lg bg-surface-container-low/30 border-t border-outline-variant/30">
+					<p class="font-body-sm text-body-sm text-on-surface-variant">
+						Showing
+						<span class="font-bold text-on-surface">1</span>
+						to
+						<span class="font-bold text-on-surface">10</span>
+						of
+						<span class="font-bold text-on-surface">24,592</span>
+						users
+					</p>
+					<div class="flex items-center gap-xs">
+						<button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant hover:bg-white transition-all disabled:opacity-30" disabled="">
+							<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+						</button>
+						<button class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white font-label-bold text-label-bold shadow-sm">1</button>
+						<button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant hover:bg-white transition-all font-label-bold text-label-bold">2</button>
+						<button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant hover:bg-white transition-all font-label-bold text-label-bold">3</button>
+						<span class="px-2 text-on-surface-variant">...</span>
+						<button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant hover:bg-white transition-all font-label-bold text-label-bold">2,459</button>
+						<button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant hover:bg-white transition-all">
+							<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+						</button>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- Footer (Shared Component Logic) -->
+		<footer class="mt-auto border-t border-outline-variant bg-surface-container-low px-margin-mobile md:px-xl py-xl">
+			<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-lg">
+				<div class="flex flex-col gap-sm">
+					<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 Airbnb, Inc. · Privacy · Terms · Sitemap · UK Modern Slavery Act · Company Details</p>
+				</div>
+				<div class="flex gap-lg">
+					<a class="font-label-caps text-label-caps text-on-surface-variant hover:underline decoration-1" href="#">Support</a>
+					<a class="font-label-caps text-label-caps text-on-surface-variant hover:underline decoration-1" href="#">Community</a>
+					<a class="font-label-caps text-label-caps text-on-surface-variant hover:underline decoration-1" href="#">Hosting</a>
+					<a class="font-label-caps text-label-caps text-on-surface-variant hover:underline decoration-1" href="#">About</a>
+				</div>
+			</div>
+		</footer>
+	</main>
+{% endblock %}

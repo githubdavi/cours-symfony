@@ -1,0 +1,145 @@
+{% extends "layout/base.html.twig" %}
+
+{% block title %}
+Confirmation de la réservation
+{% endblock %}
+
+{% block content %}
+    <main class="max-w-container-max mx-auto px-margin-mobile md:px-lg lg:px-xxl py-xxl">
+<!-- Success Message Header -->
+<div class="flex flex-col items-center text-center mb-xxl">
+<div class="success-checkmark w-20 h-20 bg-tertiary-container rounded-full flex items-center justify-center mb-md shadow-lg">
+<span class="material-symbols-outlined text-on-tertiary text-[40px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-xs">Votre réservation est confirmée !</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Un email de confirmation a été envoyé à votre adresse.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xxl">
+<!-- Property & Reservation Summary -->
+<div class="lg:col-span-7 flex flex-col gap-lg">
+<!-- Main Card -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_6px_16px_rgba(0,0,0,0.08)] border border-outline-variant">
+<div class="aspect-[16/9] w-full relative">
+<img alt="Villa image" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLsC6Ld-nHCPwXulRXVa8gcPcXYquU-GHNY4sMdxug4RIm7nMjZZdLaaSpLE5GZEgsKwBBXqjYhvUlCjnv-6mKvtLThjG77SvepnxX99Zek-NTCWGHlqkOsvrZP8-XdXvuh8P60Eq78dYLM64KOATLpZzmUk1_y4GVrMxoitwP59fyW2swNszVp25c7EzOv-xvmam5mZpsZ9O005z_Ffj4yz0xVh8WUTwkbCWQPIAmr_te19e-thq1Bm3J5U"/>
+<div class="absolute top-4 left-4 bg-surface/90 backdrop-blur-md px-md py-xs rounded-full shadow-sm">
+<span class="font-label-bold text-label-bold text-primary">Luxe</span>
+</div>
+</div>
+<div class="p-xl">
+<div class="flex justify-between items-start mb-md">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs">{{ property.title }}</h2>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                                    {{ property.address.city }},
+                                    {{ property.address.country }}
+                                </p>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-xs mb-1">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-bold text-label-bold">4.98</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">(124 commentaires)</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-lg border-t border-b border-outline-variant py-lg my-lg">
+<div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-xs">DATES</h3>
+<p class="font-body-lg text-body-lg text-on-surface font-semibold">22 - 29 Juillet 2024</p>
+</div>
+<div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-xs">VOYAGEURS</h3>
+<p class="font-body-lg text-body-lg text-on-surface font-semibold">2 voyageurs</p>
+</div>
+</div>
+<div>
+<h3 class="font-label-bold text-label-bold text-on-surface mb-md">Détails du paiement</h3>
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between font-body-md text-body-md">
+<span>7 nuits x €1,200</span>
+<span>€8,400</span>
+</div>
+<div class="flex justify-between font-body-md text-body-md">
+<span>Frais de ménage</span>
+<span>€450</span>
+</div>
+<div class="flex justify-between font-body-md text-body-md">
+<span>Frais de service Airbnb</span>
+<span>€1,410</span>
+</div>
+<div class="flex justify-between font-body-lg text-body-lg font-bold pt-md border-t border-outline-variant">
+<span>Total payé (EUR)</span>
+<span class="text-primary">€10,260</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col md:flex-row gap-md">
+<button class="flex-1 bg-primary text-on-primary py-md px-xl rounded-lg font-label-bold text-label-bold hover:brightness-90 transition-all active:scale-[0.98] shadow-md">
+                        Gérer ma réservation
+                    </button>
+<button class="flex-1 bg-surface-container-high text-on-surface py-md px-xl rounded-lg font-label-bold text-label-bold hover:bg-surface-dim transition-all active:scale-[0.98] border border-outline-variant">
+                        Contacter l'hôte
+                    </button>
+</div>
+<button class="w-full font-label-bold text-label-bold text-on-surface-variant hover:text-on-surface transition-colors py-sm">
+                    Retour à l'accueil
+                </button>
+</div>
+<!-- Side Map & Arrival Info -->
+<div class="lg:col-span-5 flex flex-col gap-lg">
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0px_6px_16px_rgba(0,0,0,0.08)] border border-outline-variant h-fit">
+<div class="p-lg">
+<h3 class="font-headline-sm text-headline-sm mb-md">Où vous irez</h3>
+</div>
+<div class="w-full h-80 bg-surface-container-high relative">
+<!-- Map Snippet Mockup -->
+<img alt="Map of Saint-Tropez" class="w-full h-full object-cover opacity-80" data-alt="A stylized digital map view of the French Riviera coastline near Saint-Tropez. The map uses a minimalist, modern UI style with soft pastel colors, emphasizing the blue Mediterranean sea and golden beaches. Important landmarks and the villa location are marked with premium red pins, fitting the overall elegant and high-end travel aesthetic." data-location="Saint-Tropez" src="https://lh3.googleusercontent.com/aida/AP1WRLth9HpCikGhc16u2NU7kDCxT8BIIb6NxFv90qArOrW4mhNevoasDJpEbAPVcoxQRqa9s-udEBoPbxtI5b32-DB7EYLS0raps1shCXmNbdCI_mb9symgv1uYya2DbaY3p5124om7oPaLC7dzvnD9g36_ILYIvLgrY4qrkdnshcasTi8-IWi6BPxN_l2vv5x3ZQeUuFAEfX7-BjtobOTVoi7j6eXyg3b27GS0WaWjaoNaIB3rqYJH2BSK_LnJ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center border-4 border-white shadow-xl animate-pulse">
+<span class="material-symbols-outlined text-white">home</span>
+</div>
+</div>
+</div>
+<div class="p-lg">
+<div class="flex items-start gap-md mb-lg">
+<div class="p-base bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined text-on-surface">directions_car</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold mb-xs">Accès facile</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Un parking gratuit est disponible sur place. L'hôte vous enverra les instructions d'arrivée 48h avant le séjour.</p>
+</div>
+</div>
+<div class="flex items-start gap-md">
+<div class="p-base bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined text-on-surface">support_agent</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold mb-xs">Assistance 24/7</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">L'équipe AirCover est disponible à tout moment si vous avez besoin d'aide pour votre voyage.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Host Teaser -->
+<div class="bg-surface-container-lowest rounded-xl p-lg border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="Host Profile" class="w-full h-full object-cover" data-alt="Portrait of a sophisticated female villa host in her late 40s. She is dressed in elegant coastal attire, looking friendly and welcoming. The setting is a bright, sun-drenched terrace in Saint-Tropez, with high-end furniture and greenery in the background, matching the premium brand identity." src="https://lh3.googleusercontent.com/aida/AP1WRLvZOUDwoahzzxIqvTQS33IsB3WdPmgphu0pyTvhNJUwPpzHdyqMra5UDK0nVA3NH56Fu5oQJLRhVcKLZZsUHXrGZuv3w6K2ImlYCGUBNRxrqnyfCNTTZP49_oH4fyLu2YcMJRdv01gB4b0_8L5PotHnGdQodUIU9d8Lc6BrVEbC0O6nAZsni8AmTBVCCx7YSfbmdw_nhFZ8SEqUDiOO9kEQ8sXmtcaV2uPLoKCzvz0wU5fcNiqKM4T-Im1a"/>
+</div>
+<div>
+<p class="font-label-bold text-label-bold">Hébergé par Isabelle</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Superhôte depuis 5 ans</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+</div>
+</div>
+</main>
+{% endblock %}

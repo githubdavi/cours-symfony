@@ -1,0 +1,197 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<body class="bg-surface font-body-md text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline docked full-width top-0 sticky z-50 shadow-sm dark:shadow-none">
+<nav class="flex justify-between items-center w-full px-margin-mobile md:px-lg lg:px-xxl py-md max-w-container-max mx-auto">
+  <div class="flex items-center gap-base">
+    <span class="font-display-lg text-display-lg text-primary dark:text-primary-fixed-dim tracking-tighter">Airbnb</span>
+  </div>
+  <div class="hidden md:flex gap-lg items-center">
+    <a class="text-on-surface-variant hover:text-on-surface font-label-bold text-label-bold transition-colors duration-200" href="#">Stays</a>
+    <a class="text-on-surface-variant hover:text-on-surface font-label-bold text-label-bold transition-colors duration-200" href="#">Experiences</a>
+    <a class="text-on-surface-variant hover:text-on-surface font-label-bold text-label-bold transition-colors duration-200" href="#">Online Experiences</a>
+  </div>
+  <div class="flex items-center gap-md">
+    <button class="p-base rounded-full hover:bg-surface-container-low transition-colors duration-200">
+      <span class="material-symbols-outlined text-on-surface-variant">language</span>
+    </button>
+    <button class="flex items-center gap-sm p-xs pl-md border border-outline-variant rounded-full hover:shadow-md transition-all duration-200">
+      <span class="material-symbols-outlined">menu</span>
+      <div class="w-8 h-8 rounded-full bg-on-surface-variant flex items-center justify-center text-white overflow-hidden">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+      </div>
+    </button>
+  </div>
+</nav>
+</header>
+
+<main class="flex-grow relative flex items-center justify-center py-xxl px-margin-mobile bg-[url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center">
+  <div class="absolute inset-0 bg-on-surface/10 backdrop-blur-sm"></div>
+
+  <section class="relative w-full max-w-[568px] bg-white rounded-xl custom-shadow-l2 overflow-hidden animate-in fade-in zoom-in duration-300">
+    <header class="px-lg py-md border-b border-outline-variant flex items-center justify-between">
+      <a href="{{ path('home') }}" class="p-xs hover:bg-surface-container-low rounded-full transition-colors">
+        <span class="material-symbols-outlined text-on-surface">close</span>
+      </a>
+      <h1 class="font-headline-sm text-headline-sm text-on-surface flex-grow text-center pr-8">Inscription</h1>
+    </header>
+
+    <div class="p-lg">
+
+      {# ── Erreurs globales du formulaire ── #}
+      {% if app.flashes('error') is not empty %}
+        {% for message in app.flashes('error') %}
+          <div class="mb-md p-md bg-red-50 border border-red-200 rounded-lg text-red-700 font-body-sm text-body-sm">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {{ form_start(registrationForm, {
+        attr: { class: 'flex flex-col gap-md', novalidate: 'novalidate' }
+      }) }}
+
+        {# ── Prénom / Nom ── #}
+        <div class="grid grid-cols-2 gap-0 border border-outline rounded-lg overflow-hidden {% if form_errors(registrationForm.username)%}border-red-400{% endif %}">
+          <div class="border-r border-outline p-md">
+            {{ form_label(registrationForm.username, 'Prénom', {
+              label_attr: { class: 'block font-label-caps text-label-caps text-on-surface-variant mb-xs' }
+            }) }}
+            {{ form_widget(registrationForm.username, {
+              attr: { class: 'w-full bg-transparent border-none p-0 text-body-md placeholder:text-outline-variant focus:ring-0', placeholder: 'Prénom' }
+            }) }}
+            <div class="text-red-500 font-body-sm text-body-sm mt-xs">{{ form_errors(registrationForm.username) }}</div>
+          </div>
+          <div class="p-md">
+          </div>
+        </div>
+
+
+
+        {# ── Email / Mot de passe ── #}
+        <div class="border border-outline rounded-lg divide-y divide-outline overflow-hidden">
+          <div class="p-md {% if form_errors(registrationForm.email) %}bg-red-50{% endif %}">
+            {{ form_label(registrationForm.email, 'E-mail', {
+              label_attr: { class: 'block font-label-caps text-label-caps text-on-surface-variant mb-xs' }
+            }) }}
+            {{ form_widget(registrationForm.email, {
+              attr: { class: 'w-full bg-transparent border-none p-0 text-body-md placeholder:text-outline-variant focus:ring-0', placeholder: 'E-mail' }
+            }) }}
+            <p class="mt-xs font-body-sm text-body-sm text-on-surface-variant">
+              Nous vous enverrons les confirmations de réservation par e-mail.
+            </p>
+            <div class="text-red-500 font-body-sm text-body-sm mt-xs">{{ form_errors(registrationForm.email) }}</div>
+          </div>
+
+          <div class="p-md {% if form_errors(registrationForm.plainPassword) %}bg-red-50{% endif %}">
+            {{ form_label(registrationForm.plainPassword, 'Mot de passe', {
+              label_attr: { class: 'block font-label-caps text-label-caps text-on-surface-variant mb-xs' }
+            }) }}
+            <div class="flex items-center justify-between">
+              {{ form_widget(registrationForm.plainPassword, {
+                attr: { class: 'w-full bg-transparent border-none p-0 text-body-md placeholder:text-outline-variant focus:ring-0', placeholder: 'Mot de passe', id: 'password' }
+              }) }}
+              <button class="text-label-bold font-label-bold underline decoration-1 text-on-surface-variant hover:text-on-surface" type="button" id="togglePassword">
+                Afficher
+              </button>
+            </div>
+            <div class="text-red-500 font-body-sm text-body-sm mt-xs">{{ form_errors(registrationForm.plainPassword) }}</div>
+          </div>
+        </div>
+
+        {# ── CGU ── #}
+        <div class="mt-md">
+          <p class="font-body-sm text-body-sm text-on-surface-variant">
+            En sélectionnant <span class="font-bold">Accepter et continuer</span>, j'accepte les
+            <a class="font-bold underline decoration-1 text-on-surface" href="#">Conditions générales</a>,
+            les <a class="font-bold underline decoration-1 text-on-surface" href="#">Conditions de paiement</a> et la
+            <a class="font-bold underline decoration-1 text-on-surface" href="#">Politique de confidentialité</a>.
+          </p>
+          {# Champ agreeTerms caché mais fonctionnel #}
+          <div class="mt-sm flex items-center gap-sm">
+            {{ form_widget(registrationForm.agreeTerms, {
+              attr: { class: 'w-4 h-4 rounded border-outline text-primary focus:ring-primary' }
+            }) }}
+            {{ form_label(registrationForm.agreeTerms, "J'accepte les CGU", {
+              label_attr: { class: 'font-body-sm text-body-sm text-on-surface-variant cursor-pointer' }
+            }) }}
+          </div>
+          <div class="text-red-500 font-body-sm text-body-sm mt-xs">{{ form_errors(registrationForm.agreeTerms) }}</div>
+        </div>
+
+        {# ── Submit ── #}
+        <button
+          type="submit"
+          class="mt-md w-full bg-[#ff385c] hover:bg-[#e31c5f] text-white font-label-bold text-label-bold py-md rounded-lg transition-all active:scale-[0.98] active:opacity-90"
+        >
+          Accepter et continuer
+        </button>
+
+      {{ form_end(registrationForm) }}
+
+      <div class="mt-lg pt-lg border-t border-outline-variant">
+        <p class="text-center font-body-md text-body-md">
+          Vous avez déjà un compte ?
+          <a class="font-bold underline decoration-1 hover:text-primary transition-colors" href="{{ path('login') }}">Connexion</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-surface-dim border-t border-outline-variant dark:border-outline full-width">
+  <div class="max-w-container-max mx-auto px-margin-mobile md:px-lg py-xxl flex flex-col gap-lg">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-lg pb-xl border-b border-outline-variant">
+      <div class="flex flex-col gap-sm">
+        <span class="font-label-bold text-label-bold text-on-surface">Support</span>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:underline" href="#">Centre d'aide</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:underline" href="#">AirCover</a>
+      </div>
+      <div class="flex flex-col gap-sm">
+        <span class="font-label-bold text-label-bold text-on-surface">Communauté</span>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:underline" href="#">Forum de la communauté</a>
+      </div>
+      <div class="flex flex-col gap-sm">
+        <span class="font-label-bold text-label-bold text-on-surface">Accueil</span>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:underline" href="#">Mettre mon logement sur Airbnb</a>
+      </div>
+      <div class="flex flex-col gap-sm">
+        <span class="font-label-bold text-label-bold text-on-surface">Airbnb</span>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:underline" href="#">Newsroom</a>
+        <a class="font-body-sm text-body-sm text-on-surface-variant hover:underline" href="#">Carrières</a>
+      </div>
+    </div>
+    <div class="flex flex-col md:flex-row justify-between items-center gap-md">
+      <div class="font-body-sm text-body-sm text-on-surface-variant">
+        © 2024 Airbnb, Inc. · Privacy · Terms · Sitemap
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Toggle password visibility
+  const passwordInput = document.getElementById('password');
+  const toggleBtn = document.getElementById('togglePassword');
+  if (toggleBtn && passwordInput) {
+    toggleBtn.addEventListener('click', () => {
+      const isPassword = passwordInput.getAttribute('type') === 'password';
+      passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+      toggleBtn.textContent = isPassword ? 'Masquer' : 'Afficher';
+    });
+  }
+
+  // Focus highlight sur les champs
+  document.querySelectorAll('input').forEach(input => {
+    const container = input.closest('div.p-md');
+    if (container) {
+      input.addEventListener('focus', () => container.classList.add('bg-surface-container-low'));
+      input.addEventListener('blur', () => container.classList.remove('bg-surface-container-low'));
+    }
+  });
+</script>
+</body>
+{% endblock %}

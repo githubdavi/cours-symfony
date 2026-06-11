@@ -1,0 +1,99 @@
+<!-- Top Navigation Bar -->
+<header class="bg-surface sticky top-0 z-50 border-b border-outline-variant transition-all duration-300" id="main-header">
+	<div
+		class="max-w-container-max mx-auto px-margin-mobile md:px-lg lg:px-xxl py-md flex flex-wrap items-center justify-between gap-md">
+		<!-- Brand Logo -->
+		<div class="flex items-center gap-xs cursor-pointer group">
+			<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">travel_explore</span>
+			<span onclick="window.location.href='{{ path('home') }}'" class="font-display-lg text-display-lg-mobile md:text-display-lg tracking-tighter text-primary">Airbnb</span>
+		</div>
+		<!-- Search Pill -->
+		<div class="order-3 md:order-2 w-full md:w-auto flex justify-center">
+			<div class="flex items-center bg-surface border border-outline-variant rounded-full py-base pl-xl pr-base shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+				<button class="font-label-bold text-label-bold px-md border-r border-outline-variant">Anywhere</button>
+				<button class="font-label-bold text-label-bold px-md border-r border-outline-variant">Any week</button>
+				<button class="font-body-sm text-body-sm px-md text-on-surface-variant">Add guests</button>
+				<div class="bg-primary p-base rounded-full flex items-center justify-center text-on-primary">
+					<span class="material-symbols-outlined text-[18px]">search</span>
+				</div>
+			</div>
+		</div>
+		<!-- User Actions -->
+		<div class="order-2 md:order-3 flex items-center gap-md">
+			{% if app.user %}
+				<a>Mes reservations</a>
+			{% endif %}
+			{% if is_granted('ROLE_ADMIN') %}
+				<a href="{{ path('admin') }}">Admin</a>
+			{% endif %}
+			<div class="flex items-center gap-sm border border-outline-variant p-xs pl-md rounded-full hover:shadow-md transition-shadow cursor-pointer bg-surface">
+				<span class="material-symbols-outlined text-on-surface-variant">menu</span>
+				{% if app.user %}
+					<a href="{{ path('app_logout') }}">Se deconnecter</a>
+				{% else %}
+					<a href="{{ path('login') }}">Se connecter</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<!-- Filter Bar -->
+	<div class="bg-surface w-full">
+		<div class="max-w-container-max mx-auto px-margin-mobile md:px-lg lg:px-xxl py-base flex items-center gap-xl overflow-x-auto hide-scrollbar scroll-smooth">
+			<button class="flex flex-col items-center gap-xs min-w-fit border-b-2 border-on-surface pb-base opacity-100 group">
+				<span class="material-symbols-outlined text-on-surface">pool</span>
+				<span class="font-label-bold text-[12px]">Amazing pools</span>
+			</button>
+			<button class="flex flex-col items-center gap-xs min-w-fit pb-base opacity-60 hover:opacity-100 hover:border-b-2 hover:border-outline-variant transition-all group">
+				<span class="material-symbols-outlined">beach_access</span>
+				<span class="font-label-bold text-[12px]">Beachfront</span>
+			</button>
+			<button class="flex flex-col items-center gap-xs min-w-fit pb-base opacity-60 hover:opacity-100 hover:border-b-2 hover:border-outline-variant transition-all group">
+				<span class="material-symbols-outlined">cabin</span>
+				<span class="font-label-bold text-[12px]">Cabins</span>
+			</button>
+			<button class="flex flex-col items-center gap-xs min-w-fit pb-base opacity-60 hover:opacity-100 hover:border-b-2 hover:border-outline-variant transition-all group">
+				<span class="material-symbols-outlined">castle</span>
+				<span class="font-label-bold text-[12px]">Castles</span>
+			</button>
+			<button class="flex flex-col items-center gap-xs min-w-fit pb-base opacity-60 hover:opacity-100 hover:border-b-2 hover:border-outline-variant transition-all group">
+				<span class="material-symbols-outlined">holiday_village</span>
+				<span class="font-label-bold text-[12px]">Tiny homes</span>
+			</button>
+			<button class="flex flex-col items-center gap-xs min-w-fit pb-base opacity-60 hover:opacity-100 hover:border-b-2 hover:border-outline-variant transition-all group">
+				<span class="material-symbols-outlined">landscape</span>
+				<span class="font-label-bold text-[12px]">Amazing views</span>
+			</button>
+			<button class="flex flex-col items-center gap-xs min-w-fit pb-base opacity-60 hover:opacity-100 hover:border-b-2 hover:border-outline-variant transition-all group">
+				<span class="material-symbols-outlined">apartment</span>
+				<span class="font-label-bold text-[12px]">Top cities</span>
+			</button>
+			<button class="flex flex-col items-center gap-xs min-w-fit pb-base opacity-60 hover:opacity-100 hover:border-b-2 hover:border-outline-variant transition-all group">
+				<span class="material-symbols-outlined">local_fire_department</span>
+				<span class="font-label-bold text-[12px]">Trending</span>
+			</button>
+			<button class="flex flex-col items-center gap-xs min-w-fit pb-base opacity-60 hover:opacity-100 hover:border-b-2 hover:border-outline-variant transition-all group">
+				<span class="material-symbols-outlined">downhill_skiing</span>
+				<span class="font-label-bold text-[12px]">Ski-in/out</span>
+			</button>
+			<button class="flex flex-col items-center gap-xs min-w-fit pb-base opacity-60 hover:opacity-100 hover:border-b-2 hover:border-outline-variant transition-all group">
+				<span class="material-symbols-outlined">forest</span>
+				<span class="font-label-bold text-[12px]">National parks</span>
+			</button>
+			<button class="flex flex-col items-center gap-xs min-w-fit pb-base opacity-60 hover:opacity-100 hover:border-b-2 hover:border-outline-variant transition-all group">
+				<span class="material-symbols-outlined">surfing</span>
+				<span class="font-label-bold text-[12px]">Surfing</span>
+			</button>
+			<button class="flex flex-col items-center gap-xs min-w-fit pb-base opacity-60 hover:opacity-100 hover:border-b-2 hover:border-outline-variant transition-all group">
+				<span class="material-symbols-outlined">water_lux</span>
+				<span class="font-label-bold text-[12px]">Luxe</span>
+			</button>
+			<!-- Filters Modal Trigger -->
+			<div class="ml-auto hidden md:flex items-center gap-sm">
+				<button class="flex items-center gap-sm border border-outline-variant px-md py-base rounded-xl hover:border-on-surface transition-all">
+					<span class="material-symbols-outlined text-[20px]">tune</span>
+					<span class="font-label-bold text-[12px]">Filters</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</header>

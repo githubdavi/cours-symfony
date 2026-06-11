@@ -1,0 +1,16 @@
+# fixtures/reservation.yaml
+
+App\Entity\Reservation:
+  reservation_{1..5}:
+    property: "@property_<current()>"
+    guest: "@mon_user_<current()>"
+    checkinDate: "<dateTimeBetween('+7 days', '+14 days')>"
+    checkoutDate: "<dateTimeBetween('+15 days', '+21 days')>"
+    guestsCount: "<numberBetween(1, 6)>"
+    status: "<randomElement(['pending', 'confirmed', 'cancelled', 'completed'])>"
+    totalPrice: "<randomFloat(2, 50, 1500)>"
+    cleaningFee: "<randomFloat(2, 10, 150)>"
+    serviceFee: "<randomFloat(2, 5, 100)>"
+    securityDeposit: "<randomFloat(2, 50, 500)>"
+    currency: "<randomElement(['EUR', 'USD', 'GBP'])>"
+    cancellationReason: null

@@ -1,0 +1,35 @@
+<aside class="w-64 bg-surface border-r border-outline-variant hidden md:flex flex-col py-xl px-md gap-lg overflow-y-auto custom-scrollbar">
+	<nav class="flex flex-col gap-xs">
+		<a href="{{ path('admin') }}" class="flex items-center gap-md p-sm rounded-lg bg-surface-container-high text-on-surface font-label-bold" href="#">
+			<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+			Dashboard
+		</a>
+		<a href="{{ path('app_property_index') }}" class="flex items-center gap-md p-sm rounded-lg hover:bg-surface-container-low text-on-surface-variant transition-colors font-label-bold" href="#">
+			<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+			Logements gestion
+		</a>
+		<a href="{{ path('admin_user') }}" class="flex items-center gap-md p-sm rounded-lg hover:bg-surface-container-low text-on-surface-variant transition-colors font-label-bold" href="#">
+			<span class="material-symbols-outlined" data-icon="group">group</span>
+			User Management
+		</a>
+		<a class="flex items-center gap-md p-sm rounded-lg hover:bg-surface-container-low text-on-surface-variant transition-colors font-label-bold" href="#">
+			<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+			Reservations
+		</a>
+		<a class="flex items-center gap-md p-sm rounded-lg hover:bg-surface-container-low text-on-surface-variant transition-colors font-label-bold" href="#">
+			<span class="material-symbols-outlined" data-icon="insights">insights</span>
+			Analytics
+		</a>
+		<a class="flex items-center gap-md p-sm rounded-lg hover:bg-surface-container-low text-on-surface-variant transition-colors font-label-bold" href="#">
+			<span class="material-symbols-outlined" data-icon="settings">settings</span>
+			Settings
+		</a>
+	</nav>
+	<div class="mt-auto">
+		<div class="p-md rounded-xl bg-primary-fixed-dim bg-opacity-10 border border-primary-fixed-dim">
+			<h4 class="font-label-bold text-on-primary-fixed-variant text-sm mb-xs">Pro Feature: Insight AI</h4>
+			<p class="text-xs text-on-surface-variant mb-md">Get predictive analytics on seasonal booking trends.</p>
+			<button class="w-full py-xs px-sm bg-primary text-on-primary rounded-lg text-xs font-label-bold hover:bg-primary-container transition-all">Upgrade Now</button>
+		</div>
+	</div>
+</aside>
